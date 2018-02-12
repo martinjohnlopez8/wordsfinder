@@ -3,6 +3,7 @@
   {% block content %}
 
       {% if user.is_authenticated %}
+      <h2>You are looking for words in the word: {{ word }}</h2>
       <form method="POST">{% csrf_token %}
         <input type="text" name="word" placeholder="Please input word">
         <input type="submit" name="wordsfinder" value="Go"/>
@@ -19,8 +20,11 @@
         </form>
         <a href="{% url 'wordsfinder:signup' %}"><h1>Or Register</h1></a>
       {% endif %}
-      {% for word in words %}
-        <p>{{word}}</p>
-      {% endfor %}
+      <div class="wordlist">
+        {% for word in words %}
+          <p class="words">{{word}}</p>
+        {% endfor %}
+      </div>
+
 
   {% endblock %}

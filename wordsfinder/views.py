@@ -21,6 +21,7 @@ def home(request):
     elif request.POST.get('wordsfinder'):
         dictionary = open("wordsfinder/dictionary.txt", "r").read().split('\n')
         letters = list(request.POST['word'].lower()) + list(request.POST['word'].upper())
+        wordInput = request.POST['word']
         wordList = []
         for word in dictionary:
             if len(word) > len(letters):
@@ -28,7 +29,8 @@ def home(request):
             if all(letters.count(char) >= word.count(char) for char in word):
                 wordList.append(word)
         return render(request, 'wordsfinder/index.html', {
-            'words': wordList
+            'words': wordList,
+            'word': wordInput
         })
 
     elif request.POST.get('logout'):
