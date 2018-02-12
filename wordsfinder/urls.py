@@ -1,0 +1,9 @@
+from django.urls import path
+
+from . import views
+
+app_name = 'wordsfinder'
+urlpatterns = [
+    path('', views.home, name='index'),
+    path('signup/', views.signup, name='signup'),
+]

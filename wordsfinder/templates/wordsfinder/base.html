@@ -1,0 +1,21 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Words Finder</title>
+    <link rel="stylesheet" type="text/css "href="{% static 'wordsfinder/css/style.css' %}">
+  </head>
+  <body>
+    <header>
+      <div class="page-header">
+        <h1> Words Finder</h1>
+        {% if user.is_authenticated %}
+          Hello {{ user }}
+        {% endif %}
+      </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

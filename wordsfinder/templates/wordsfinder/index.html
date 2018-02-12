@@ -1,0 +1,26 @@
+{% extends 'wordsfinder/base.html' %}
+
+  {% block content %}
+
+      {% if user.is_authenticated %}
+      <form method="POST">{% csrf_token %}
+        <input type="text" name="word" placeholder="Please input word">
+        <input type="submit" name="wordsfinder" value="Go"/>
+      </form>
+      <form method="POST">{% csrf_token %}
+        <input type="submit" name="logout" value="Log Out"/>
+      </form>
+      {% else %}
+        <h1>Please Log in</h1>
+        <form method="POST">{% csrf_token %}
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <input type="submit" name="login" value="Log in"/>
+        </form>
+        <a href="{% url 'wordsfinder:signup' %}"><h1>Or Register</h1></a>
+      {% endif %}
+      {% for word in words %}
+        <p>{{word}}</p>
+      {% endfor %}
+
+  {% endblock %}
