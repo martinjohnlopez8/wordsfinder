@@ -3,9 +3,20 @@
 {% block content %}
 
 <h2>Sign up</h2>
-<form method="post">
+<form method="POST">
   {% csrf_token %}
-  {{ form.as_p }}
+  {% for field in form %}
+  <p>
+    {{ field.label_tag }}
+    {{ field }}
+    {% if field.help_text %}
+      <p style="display: none">{{ field.help_text }}</p>
+    {% endif %}
+    {% for error in field.errors %}
+      <p style="color: red">{{ error }}</p>
+    {% endfor %}
+  </p>
+  {% endfor %}
   <input type="submit" name="signup" value="Sign Up"/>
 </form>
 
