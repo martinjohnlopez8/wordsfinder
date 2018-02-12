@@ -13,3 +13,9 @@ body {
   float: left;
   padding-right: 40px;
 }
+
+.logout {
+  border: none;
+  float: right;
+  margin-right: 30px;
+}
