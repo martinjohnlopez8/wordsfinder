@@ -11,7 +11,7 @@
       <div class="page-header">
         <h1> Words Finder</h1>
         {% if user.is_authenticated %}
-          Hello {{ user }}
+          <h3>Hello {{ user }}</h3>
         <form method="POST">{% csrf_token %}
           <input class="logout" type="submit" name="logout" value="Log Out"/>
         </form>
