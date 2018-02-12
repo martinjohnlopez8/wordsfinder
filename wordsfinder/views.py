@@ -13,11 +13,6 @@ def home(request):
             login(request, user)
         else:
             print('Error logging in')
-    # elif request.POST.get('register'):
-    #     username = request.POST['register_username']
-    #     password = request.POST['register_password']
-    #     user = authenticate(username=username, password=password)
-    #     login(request, user)
     elif request.POST.get('wordsfinder'):
         dictionary = open("wordsfinder/dictionary.txt", "r").read().split('\n')
         letters = list(request.POST['word'].lower()) + list(request.POST['word'].upper())
@@ -37,7 +32,6 @@ def home(request):
         logout(request)
 
     return render(request, 'wordsfinder/index.html', {
-        # 'dictionary': dictionary,
     })
 
 def signup(request):
